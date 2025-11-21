@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: rgba(230,230,230,1);
+  --color-background: rgba(50,50,50,1);
+  --color-brand: rgba(150,100,255,1);
+}
+
+
+.test{
+  color: rgba(150,100,250,1);
+  color: rgba(50,50,50,1);
+  color: rgba(230,230,230,1);
+}
+#story-bar-slider::-webkit-scrollbar {
+    display: none;
+}
+
+#story-bar-slider {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
