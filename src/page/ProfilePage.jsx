@@ -24,7 +24,7 @@ const ProfilePage = () => {
   
   useEffect(()=>{
     fetchUser()
-  },[])
+  },[id])
   
   return (
     <div className="relative z-10 bg-white" >
@@ -33,8 +33,8 @@ const ProfilePage = () => {
           <p>Loading...</p>
         </> :
         <>
-        <ProfileDetailSection user={user} />
-        <ProfileTweetsSection user={user} />
+        <ProfileDetailSection user={user}  />
+        <ProfileTweetsSection user={user} key={user.id}/>
         </>
       }
     </div>

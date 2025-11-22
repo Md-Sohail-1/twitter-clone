@@ -4,20 +4,28 @@ import { getUser } from '../../services/apis'
 import { RxDotsVertical } from "react-icons/rx"
 
 
-const PostCard = ({tweet}) => {
-  const [user, setUser] = useState()
+const PostCard = ({tweet, user}) => {
+  const [currentUser, setCurrentUser] = useState()
   const [loading, setLoading] = useState(true)
   const [fullDesc, setFullDesc] = useState(false)
   
   
   const fetchUser = async () => {
-    try{
-      let data = await getUser(tweet.userId);
-      setUser(data);
-      setLoading(false)
+    if(!user){
+
+      try{
+        let data = await getUser(tweet.userId);
+        setCurrentUser(data);
+        setLoading(false)
+      }
+      catch(err){
+        console.log(err)
+      }
     }
-    catch(err){
-      console.log(err)
+    else{
+      setCurrentUser(user)
+      setLoading(false)
+      
     }
   }
   
@@ -36,10 +44,10 @@ const PostCard = ({tweet}) => {
       <>
         <div className="h-14 w-full bg-slate-100/50 flex items-center gap-2 px-4">
         <div className="">
-          <img className="h-10 w-10 bg-white rounded-full overflow-hidden"/>
+          <img className="h-10 w-10 bg-primary rounded-full overflow-hidden"/>
         </div>
-        <Link to={`/profile/${user.id}`}>
-          <b>{user?.name}</b>
+        <Link to={`/profile/${currentUser.id}`}>
+          <b>{currentUser?.name}</b>
         </Link>
         <div className="ml-auto" >
           <RxDotsVertical />
@@ -51,7 +59,7 @@ const PostCard = ({tweet}) => {
         <div className="min-h-auto max-h-auto pb-2 max-h-auto bg-slate-100/50 " >
           <div className="px-4 py-4" >
           <p>
-            <b>{user?.username} </b>
+            <b>{currentUser?.username} </b>
             { fullDesc ? 
               <> 
                 {tweet.title + ' '}

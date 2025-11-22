@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import { Link } from 'react-router'
 import { getUsers } from '../../services/apis'
+import SearchedUserCard from '../components/SearchedUserCard'
 
 const SearchPage = () => {
   const [users, setUsers] = useState()
@@ -38,8 +39,8 @@ const SearchPage = () => {
   },[])
   
   return (
-    <div className="mt-20 mb-20 mx-4" >
-      <div>
+    <div className="mt-20 mb-20 md:absolute md:left-1/5 md:w-4/5 md:top-0 overflow-x-hidden" >
+      <div className='mx-4'>
         <input type="search"
         className="h-12 border-2 border-slate-200/50 outline-none focus:border-2 focus:border-slate-400/50 w-full px-4 rounded-xl " 
         placeholder="Search here..." 
@@ -54,18 +55,10 @@ const SearchPage = () => {
       </> 
       ) : (
         filteredUsers.length > 0 ? (
-          <div className="flex flex-col mt-6 px-2" >
+          <div className="flex flex-col mt-6 px-2 mx-2 w-full" >
           {
             filteredUsers.map((user)=>(
-            <Link to={`/profile/${user.id}`} className="flex items-center gap-4 h-16 border-y-1 border-slate-200/50" >
-              <div>
-                <img className="h-12 w-12 rounded-full bg-primary overflow-hidden" />
-              </div>
-              <div className="flex flex-col gap-0">
-                <b>{user.name}</b>
-                <p>{user.username}</p>
-              </div>
-            </Link>
+              <SearchedUserCard user={user} key={user.id} />
             ))
           }
         </div>

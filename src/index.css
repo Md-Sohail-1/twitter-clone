@@ -4,11 +4,18 @@
   --color-primary: rgba(230,230,230,1);
   --color-background: rgba(50,50,50,1);
   --color-brand: rgba(150,100,255,1);
+  --color-brand-second: rgba(179, 147, 241,1);
+}
+body::-webkit-scrollbar {
+    display: none;
 }
 
+textarea::-webkit-scrollbar {
+    display: none;
+}
 
 .test{
-  color: rgba(150,100,250,1);
+  color: rgb(179, 147, 241);
   color: rgba(50,50,50,1);
   color: rgba(230,230,230,1);
 }
