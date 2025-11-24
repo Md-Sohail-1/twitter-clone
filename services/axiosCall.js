@@ -9,8 +9,8 @@ const commonRequest = async (url, method, body, headers) => {
     else{
       let response = await fetch(url,{
         method: method,
-        headers: headers,
         body: JSON.stringify(body)
+        headers: headers,
       })
       let data = await response.json();
       return data

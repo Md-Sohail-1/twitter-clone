@@ -13,3 +13,6 @@ export const getUserPosts = async (id) => {
 export const getUser = async (id) => {
   return await commonRequest(`${BASE_URL}/users/${id}`, 'GET', '', '')
 }
+export const postTweet = async (body, header) => {
+  return await commonRequest(`${BASE_URL}/posts`, 'POST', body, header)
+}
