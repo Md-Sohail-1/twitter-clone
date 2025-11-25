@@ -15,17 +15,23 @@ const CreateTweetPage = () => {
   }
   
   const handleFormSubmit = async (e) => {
-    //alert(JSON.stringify(formData))
-    e.preventDefault()
-    let response = await postTweet(JSON.stringify({
-      title: formData.title,
-      body: formData.body,
-      userId: userId,
-    }), 
-    {
-      'Content-type': 'application/json'
-    },);
-    let status = await response.json()
+    try{
+      //alert(JSON.stringify(formData))
+      e.preventDefault()
+      let response = await postTweet({
+        title: formData.title,
+        body: formData.body,
+        userId: userId,
+      }, 
+      {
+        'Content-type': 'application/json; charset=UTF-8'
+      },);
+      // console.log(response)
+      // console.log("created ")
+    }
+    catch(err){
+      console.log(err)
+    }
     //alert(status)
   }
   

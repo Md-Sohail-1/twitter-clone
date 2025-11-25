@@ -37,7 +37,7 @@ const PostCard = ({tweet, user}) => {
   
   
   return (
-    <div className="h-auto mx-auto min-h-60 w-full border-1 border-primary rounded-sm overflow-hidden flex flex-col" >
+    <div className="h-auto mx-auto min-h-60 w-full border border-primary rounded-sm overflow-hidden flex flex-col" >
       {loading ? <>
         <p>Loading...</p>
       </> :
@@ -52,14 +52,14 @@ const PostCard = ({tweet, user}) => {
         <div className="ml-auto" >
           <RxDotsVertical />
         </div>
-      </div>
-        <div className="min-h-36 max-h-auto px-4 py-2" >
+        </div>
+        <Link to={`/posts/${tweet.id}`} className="min-h-36 max-h-auto px-4 py-2" >
         <p>{tweet.body}</p>
-      </div>
+        </Link>
         <div className="min-h-auto max-h-auto pb-2 max-h-auto bg-slate-100/50 " >
           <div className="px-4 py-4" >
           <p>
-            <b>{currentUser?.username} </b>
+            <Link to={`/profile/${currentUser.id}`}><b>{currentUser?.username} </b></Link>
             { fullDesc ? 
               <> 
                 {tweet.title + ' '}

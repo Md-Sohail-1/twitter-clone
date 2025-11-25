@@ -10,6 +10,7 @@ import HomePage from './page/HomePage'
 import SearchPage from './page/SearchPage'
 import ProfilePage from './page/ProfilePage'
 import CreateTweetPage from './page/CreateTweetPage'
+import PostPage from './page/PostPage'
 
 const App = () => {
   let randomUserId = Math.floor(Math.random() *10 )+1;
@@ -19,6 +20,7 @@ const App = () => {
         <Route index element={<><Header /><HomePage /></>} />
         <Route path="/profile/:id" element={<ProfilePage />} />
         <Route path="/search" element={<><Header /><SearchPage /></>} />
+        <Route path="/posts/:id" element={<><Header /><PostPage /></>} />
         <Route path="/createtweet" element={<><Header /><CreateTweetPage /></>} />
       </Routes>
       <TabMenu />

@@ -1,16 +1,22 @@
 
-const commonRequest = async (url, method, body, headers) => {
+const commonRequest = async (url, method, bodyData, header) => {
   try{
     if(method === 'GET'){
       let response = await fetch(url);
       let data = await response.json()
       return data
     }
-    else{
+    else if(method === "POST"){
       let response = await fetch(url,{
         method: method,
-        body: JSON.stringify(body)
-        headers: headers,
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+          title: bodyData.title,
+          body: bodyData.body,
+          userId: bodyData.userId
+        }),
       })
       let data = await response.json();
       return data

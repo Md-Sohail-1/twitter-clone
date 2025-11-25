@@ -16,3 +16,9 @@ export const getUser = async (id) => {
 export const postTweet = async (body, header) => {
   return await commonRequest(`${BASE_URL}/posts`, 'POST', body, header)
 }
+export const getPostById = async (id) => {
+  return await commonRequest(`${BASE_URL}/posts/${id}`, 'GET', '', '')
+}
+export const getPostComments = async (id) => {
+  return await commonRequest(`${BASE_URL}/posts/${id}/comments`, 'GET', '', '')
+}
